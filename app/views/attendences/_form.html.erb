@@ -1,0 +1,17 @@
+<%= form_with(model: attendence, local: true) do |f| %>
+
+
+  <div class="field">
+    <%= f.label 'Movie' %>
+    <%= f.select :movie_id, Movie.all.collect {|movie| [movie.title, movie.id]}%>
+  </div>
+
+  <div class="field">
+    <%= f.label 'User' %>
+    <%= f.select :user_id, User.all.collect {|user| [user.name, user.id]}%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
