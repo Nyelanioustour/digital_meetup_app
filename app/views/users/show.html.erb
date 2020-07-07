@@ -1,9 +1,47 @@
 <p id="notice"><%= notice %></p>
-
+<div>
+<% if @user.user_img_url == nil %>
+  <img src= "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="No Image" width="100" height="100">
+<% else %>
+  <img src=<%=@user.user_img_url%> alt="<%=@user.name%>" width="120" height="100">
+<% end %>
 <p>
   <strong>Name:</strong>
   <%= @user.name %>
 </p>
+
+
+<div class ="host">
+<h3>Movies I'm hosting</h3>
+<ul>
+  <ul><% @user.hosting %></ul>
+</ul>
+
+</div>
+
+<div class ="attending">
+<h3>Movies I'm attending</h3>
+<% @user.attendences.each do |attendence|%>
+    <li><%= attendence.movie.title %></li>
+  <%end %>
+</div>
+
+<div class ="history">
+<h3>Movies I've hosted</h3>
+<% @user.movies.select do |movie|%>
+  <% if movie.time < Time.now %>
+    <li><%= movie.title%></li>
+  <%end %>
+<%end %>
+
+<h3>Movies I've seen</h3>
+<% @user.attendences.select do |attendence|%>
+  <% if attendence.movie.time < Time.now %>
+    <li><%= attendence.movie.title%></li>
+  <%end %>
+<%end %>
+</div>
+
 
 <%= link_to 'Delete User', @user, method: :delete, data: { confirm: 'Are you sure?' }%>
 <%= link_to 'Edit User', edit_user_path(@user) %> 
