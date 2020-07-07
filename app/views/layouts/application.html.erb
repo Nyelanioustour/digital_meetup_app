@@ -15,8 +15,11 @@
         <a href="homepage">Home</a>
         <a href="users">User list</a>
         <a href="movies">Movie list</a>
-        <a href="login">Sign In</a>
-        <%= button_to "Logout", logout_path, :method => :post %>
+        <% if !logged_in? %>
+          <a href="login">Sign In</a>
+        <%else %>
+          <%= link_to "Logout", logout_path, :method => :post %>
+        <% end %>
 
     </h1>
     
