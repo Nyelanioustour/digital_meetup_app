@@ -4,6 +4,7 @@ class AttendencesController < ApplicationController
 
     def index
       @attendences = Attendence.all
+
     end
   
 
@@ -11,24 +12,24 @@ class AttendencesController < ApplicationController
     end
   
 
+    
+    
+    def edit
+      
+    end
+    
+    def update
+      
+    end
+    
     def new
       @attendence = Attendence.new
     end
-  
-
-    def edit
-
-    end
-
-    def update
-
-    end
-  
 
     def create
       @attendence = Attendence.new(attendence_params)
         if @attendence.save
-          redirect_to attendences_path, notice: 'attendence was successfully created.' 
+          redirect_to user_path(session[:user_id]), notice: 'attendence was successfully created.' 
         else
           render :new 
         end
