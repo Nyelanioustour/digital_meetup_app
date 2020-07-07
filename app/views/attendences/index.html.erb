@@ -1,0 +1,18 @@
+<%@attendences.each do |attendence|%>
+<div>
+<table>
+    <thead>
+        <tr>
+            <th><strong>Description:</strong></th>
+            <th><strong>Title:</strong></th>
+        </tr>
+    </thead>
+        <tbody>
+            <tr>
+                <td><%= attendence.movie.title %></td>
+                <td><%= attendence.user.name %></td>
+            </tr>
+        </tbody>
+    <%end%>
+</table>
+</div>
