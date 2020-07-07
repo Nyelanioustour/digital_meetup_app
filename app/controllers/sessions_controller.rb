@@ -20,6 +20,7 @@ class SessionsController < ApplicationController
     end
 
     def destroy
+        # byebug
         session.clear
         redirect_to homepage_path
     end

@@ -2,9 +2,11 @@
 <h1>Sign Up</h1>
 
 <%= form_for @user do |f| %>
-<%= f.label :name %><br>
+<%= f.label "Image Url" %>
+<%= f.text_field :user_img_url %>
+<%= f.label :name %>
 <%= f.text_field :name %><br>
-<%= f.label :password %><br>
+<%= f.label :password %>
 <%= f.password_field :password %><br>
 <%= f.submit %>
 <% end %>
