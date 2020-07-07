@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <header> 
+    <h1>
+        <a href="homepage">Home</a>
+        <a href="users">User list</a>
+        <a href="movies">Movie list</a>
+        <% if !logged_in? %>
+          <a href="login">Sign In</a>
+        <%else %>
+          <%= link_to "Logout", logout_path, :method => :post %>
+        <% end %>
+
+    </h1>
+    
+    </header>
     <%= yield %>
   </body>
 </html>
