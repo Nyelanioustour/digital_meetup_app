@@ -12,9 +12,10 @@
   <body>
     <header> 
     <h1>
-        <a href="homepage">Home</a>
-        <a href="users">User list</a>
-        <a href="movies">Movie list</a>
+        <%= link_to "Homepage", homepage_path%>
+        <%= link_to "Users", users_path%> 
+        <%= link_to "Movies", movies_path%>
+        
         <% if !logged_in? %>
           <a href="login">Sign In</a>
         <%else %>
