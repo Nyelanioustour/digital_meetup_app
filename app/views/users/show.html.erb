@@ -13,34 +13,62 @@
 
 <div class ="host">
 <h3>Movies I'm hosting</h3>
-<ul>
-  <ul><% @user.hosting %></ul>
-</ul>
+<% unless @user.hosting.count == 0  %>
+  <ul>
+    <% @user.hosting.each do |movie| %>
+      <li><%=  movie.title%></li>
+    <% end %>
+  </ul>
 
-</div>
+  </div>
+  <% else %>
+    <ul>
+      <li><%= "This user is not hosting any movies" %></li>
+    </ul>
+<% end %>
 
 <div class ="attending">
 <h3>Movies I'm attending</h3>
-<% @user.attendences.each do |attendence|%>
-    <li><%= attendence.movie.title %></li>
-  <%end %>
-</div>
+<% unless @user.attending.count == 0 %>
+  <ul>
+    <% @user.attending.each do |attendence|%>
+        <li><%= attendence.movie.title %></li>
+      <%end %>
+  </ul>
+  </div>
+<% else %>
+    <ul>
+      <li><%= "This user is not attending any movies" %></li>
+    </ul>
+<% end %>
 
 <div class ="history">
 <h3>Movies I've hosted</h3>
-<% @user.movies.select do |movie|%>
-  <% if movie.time < Time.now %>
-    <li><%= movie.title%></li>
-  <%end %>
+<% unless @user.hosted.count == 0 %>
+<% @user.hosted.each do |movie|%>
+    <li><%= movie.title %></li>
 <%end %>
+<% else %>
+    <ul>
+      <li><%= "This user has not hasted any movies" %></li>
+    </ul>
+<% end %>
 
 <h3>Movies I've seen</h3>
-<% @user.attendences.select do |attendence|%>
+<% unless @user.attended.count == 0 %>
+<ul>
+<% @user.attended.each do |attendence|%>
   <% if attendence.movie.time < Time.now %>
     <li><%= attendence.movie.title%></li>
   <%end %>
 <%end %>
+</ul>
 </div>
+<% else %>
+    <ul>
+      <li><%= "This user has not attended any movies" %></li>
+    </ul>
+<% end %>
 
 
 <%= link_to 'Delete User', @user, method: :delete, data: { confirm: 'Are you sure?' }%>

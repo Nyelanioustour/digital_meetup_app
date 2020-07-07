@@ -5,7 +5,7 @@ class User < ApplicationRecord
     has_secure_password
 
     def hosted
-        @user.movies.select do |movie|
+        self.movies.select do |movie|
             if movie.time < Time.now
                 movie.title
             end 
@@ -13,13 +13,15 @@ class User < ApplicationRecord
     end
 
     def hosting
-        @user.movies.each do |movie|
-            movie.title
+        self.movies.select do |movie| 
+            if movie.time >= Time.now
+                movie.title
+            end
         end
     end
 
     def attended
-        @user.attendences.select do |attendence|
+        self.attendences.select do |attendence|
             if attendence.movie.time < Time.now 
                 attendence.movie.title
             end
@@ -27,7 +29,7 @@ class User < ApplicationRecord
     end
 
     def attending
-        @user.attendences.each do |attendence|
+        self.attendences.select do |attendence|
             if attendence.movie.time >= Time.now
                 attendence.movie.title
             end
