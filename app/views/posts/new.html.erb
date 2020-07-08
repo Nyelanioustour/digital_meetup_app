@@ -1,0 +1,14 @@
+<h1>Post A Comment</h1>
+
+<%= form_for @post do |f| %>
+<%= f.label :post_title %>
+<%= f.text_field :post_title %>
+<%= f.label :comment %>
+<%= f.text_area :comment %>
+<%= f.label :rating %>
+<%= f.number_field :rating %>
+<%= f.hidden_field :user_id, :value => session[:user_id]%>
+<%= f.label :movie_id%>
+<%= f.select :movie_id, Movie.all.collect {|movie| [movie.title,movie.id]}%><br>
+<%= f.submit %>
+<% end %>

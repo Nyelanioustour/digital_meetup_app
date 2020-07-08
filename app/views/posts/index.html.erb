@@ -1,0 +1,16 @@
+<h1>Comments</h1>
+
+<ul>
+<% Post.all.each do |post| %>
+    <li>
+    <strong><%= post.post_title %></strong><br>
+    <strong>User: </strong><%= post.user.name %><br>
+    <strong>Movie name: </strong><%= post.movie.title %><br>
+    <strong>Rating: </strong><%= post.rating %><br>
+    <strong>Comment</strong> <br>
+    <%= post.comment %>
+    </li>
+    <% end %>
+</ul>
+
+<%= link_to "new comment", new_post_path %>

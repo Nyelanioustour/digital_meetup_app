@@ -48,6 +48,9 @@
 <br>
 
 <%if session[:user_id] == @movie.user_id%>
+<%= link_to 'Join Event', edit_attendence_path(@movie) %> |
 <%= link_to 'Edit Event', edit_movie_path(@movie) %> |
 <%end%>
+
+<%= link_to 'Comments', posts_path %>
 <%= link_to 'See All Events', movies_path %>
