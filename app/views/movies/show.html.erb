@@ -37,6 +37,8 @@
   <%= @movie.max_guests - @movie.attendences.count%>
 </p>
 
+
+<%= link_to 'Comments', posts_path %>
 <%= link_to 'Join Event', edit_attendence_path(@movie) %> |
 <%= link_to 'Edit Event', edit_movie_path(@movie) %> |
 <%= link_to 'All Events', movies_path %>
