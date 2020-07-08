@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Movies</h1>
-
-<table>
+<table class="table is-hoverable">
   <thead>
     <tr>
       <th>Title</th>
@@ -31,7 +30,8 @@
   </tbody>
 </table>
 
+
 <br>
 <%if logged_in?%>
-<%= link_to 'New Movie', new_movie_path %>
+<%= link_to 'Add A New Movie', new_movie_path %>
 <%end%>

@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>User List</h1>
+<h1 class="title is-4">Full List of Active Users</h1>
 
-<table>
+<table class="table is-hoverable">
   <thead>
     <tr>
       <th align=left>User Name</th>
+      <th align=center> Scheduled Events</th>
     </tr>
   </thead>
 
@@ -14,7 +15,10 @@
       <tr>
         <% unless user == User.find_by(name:"admin") %>
         <td><%= link_to user.name, user %></td>
+        <td><%="Hosting #{user.hosting.count} Upcoming Event(s)"%></td>
         <% end %>
+      </tr>
+      <tr>
       </tr>
     <% end %>
   </tbody>

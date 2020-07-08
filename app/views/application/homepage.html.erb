@@ -3,7 +3,7 @@
 <p>Digital Meetup is an app that trys to mimic the experince of going to the movies, going drinking with your friends, and more. All from the comfort of your own home.<br> You can create, host, and sign up to attend all types of events and have meet abunch of new people. </p>
 <h4>Here is a sample of some upcoming events!</h4>
 <section class=container>
-    <div class="one">
+    <div class="box" id="left">
         <%movie1=Movie.get_sample%>
         <div align=center>
         <% if movie1.img_url == "" %>
@@ -16,7 +16,7 @@
         <%=movie1.description%>
     </div>
 
-    <div class="two">
+    <div class="box" id="left">
         <%movie2=Movie.get_sample%>
         <div align=center>
         <% if movie2.img_url == "" %>
@@ -29,7 +29,7 @@
         <%=movie2.description%>
     </div>
 
-    <div class="three">
+    <div class="box" id="left">
         <%movie3=Movie.get_sample%>
         <div align=center>
         <% if movie3.img_url == "" %>

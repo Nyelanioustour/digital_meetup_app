@@ -37,6 +37,26 @@ class User < ApplicationRecord
         end 
     end
 
+    def posts_for_hosted_events
+      post_array = []
+      self.hosted.each{|movie| movie.posts.each{|post| post_array << post}}
+      return post_array
+    end
+
+    def avg_rating
+        if self.posts_for_hosted_events.count != 0
+        self.posts_for_hosted_events.map{|post| post.rating}.sum/self.posts_for_hosted_events.count
+        else 
+            return "unavailable"
+        end
+    end
+    
+    def total_ratings
+        post_array = []
+        self.movies.each{|movie| movie.posts.each{|post| post_array << post}}
+        return post_array.count
+    end
+
 end
 
 

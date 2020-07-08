@@ -1,76 +1,100 @@
 <p id="notice"><%= notice %></p>
-<div>
-<% if @user.user_img_url == "" %>
-  <img src= "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="No Image" width="100" height="100">
-<% else %>
-  <img src=<%=@user.user_img_url%> alt="<%=@user.name%>" width="120" height="100">
-<% end %>
-<h3>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</h3>
 
 
-<div class ="host">
-<h3>Movies I'm hosting</h3>
-<% unless @user.hosting.count == 0  %>
-  <ul>
-    <% @user.hosting.each do |movie| %>
-      <li><%=  movie.title%></li>
+<div class = "title is-4">
+  <h3 class="has-text-weight-semibold">User Name: <a class="has-text-weight-normal"><%= @user.name %></a></h1>
+</div>
+
+<div id="left">
+  <% if @user.user_img_url == "" %>
+    <img src= "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="No Image" width="100" height="100">
+  <% else %>
+    <img src=<%=@user.user_img_url%> alt="<%=@user.name%>" width="120" height="100">
+  <% end %>
+</div>
+
+<div id="left">
+  <h1 class = "button is-small" id ="left"> <%=link_to 'Add Movie', new_movie_path%></h1> 
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+<div class="box" id="left">
+  <h1 id="title"> Movies I'm hosting </h1>
+  <ul id="subtitle">
+    <% unless @user.hosting.count == 0  %>
+        <% @user.hosting.each do |movie| %>
+          <li><%=link_to movie.title, movie_path(movie)%></li>
+        <% end %>
+    <% else %>
+          <li><%= "This user is not currently hosting any movies" %></li>
     <% end %>
   </ul>
 
-  </div>
+<br>
+  
+  <h1 id="title">Movies I'm attending</h1>
+    <ul id="subtitle">
+  <% unless @user.attending.count == 0 %>
+      <% @user.attending.each do |attendence|%>
+          <li><%= link_to attendence.movie.title, movie_path(attendence.movie) %></li>
+        <%end %>
   <% else %>
-    <ul>
-      <li><%= "This user is not currently hosting any movies" %></li>
+        <li><%= "This user is not attending any movies" %></li>
     </ul>
-<% end %>
+  <% end %>
 
-<div class ="attending">
-<h3>Movies I'm attending</h3>
-<% unless @user.attending.count == 0 %>
-  <ul>
-    <% @user.attending.each do |attendence|%>
-        <li><%= attendence.movie.title %></li>
-      <%end %>
-  </ul>
-  </div>
-<% else %>
-    <ul>
-      <li><%= "This user is not attending any movies" %></li>
-    </ul>
-<% end %>
+<br>
 
-<div class ="history">
-<h3>Movies I've hosted</h3>
-<% unless @user.hosted.count == 0 %>
-<% @user.hosted.each do |movie|%>
-    <li><%= movie.title %></li>
-<%end %>
-<% else %>
-    <ul>
-      <li><%= "This user has not hosted any previous movies" %></li>
-    </ul>
-<% end %>
-
-<h3>Movies I've seen</h3>
-<% unless @user.attended.count == 0 %>
-<ul>
-<% @user.attended.each do |attendence|%>
-  <% if attendence.movie.time < Time.now %>
-    <li><%= attendence.movie.title%></li>
+  <h1 id="title">Movies I've hosted</h1>
+      <ul id="subtitle">
+  <% unless @user.hosted.count == 0 %>
+  <% @user.hosted.each do |movie|%>
+      <li><%= link_to movie.title, movie_path(movie) %></li>
   <%end %>
-<%end %>
-</ul>
+  <% else %>
+        <li><%= "This user has not hosted any previous movies" %></li>
+      </ul>
+  <% end %>
+
+<br>
+
+  <h1 id="title">Movies I've seen</h1>
+    <ul id="subtitle">
+  <% unless @user.attended.count == 0 %>
+      <% @user.attended.each do |attendence|%>
+        <% if attendence.movie.time < Time.now %>
+          <li><%= link_to attendence.movie.title, movie_path(attendence.movie)%></li>
+        <%end %>
+      <%end %>
+  <% else %>
+        <li><%= "This user has not attended any previous movies" %></li>
+      </ul>
+  <% end %>
 </div>
-<% else %>
-    <ul>
-      <li><%= "This user has not attended any previous movies" %></li>
-    </ul>
-<% end %>
 
+<div class= "box" id="left">
+  <h1 id="title">User Statistics</h1>
+  <h1 id="subtitle">User's current average event rating is <%=@user.avg_rating%><h1>
+  <h1 id="subtitle">User's total number of event ratings is <%=@user.total_ratings%><h1>
+  <h1 id="subtitle">User's total number of events held is <%=@user.movies.count%><h1>
+  <h1 id="subtitle">User's total number of events attendence is <%=@user.movies.count + @user.attendences.count%><h1>
 
-<%= link_to 'Delete User', @user, method: :delete, data: { confirm: 'Are you sure?' }%>
-<%= link_to 'Edit User', edit_user_path(@user) %> 
-<%= link_to 'User Index', users_path %>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<div class = "box">
+  <%if params[:id].to_i == current_user.id || current_user.id == User.find_by(name:"admin").id%>
+    <h1 class="button is-focused">
+     <%= link_to 'Delete Account', @user, method: :delete, data: { confirm: 'Are you sure?' }%>
+    </h1>
+    <h1 class="button is-focused">
+      <%= link_to 'Edit Account', edit_user_path(@user) %> 
+    </h1>
+  <%end%>
+  <h1 class="button is-focused">
+    <%= link_to 'User Index', users_path %>
+  </h1>
+</div>
