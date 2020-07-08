@@ -17,3 +17,5 @@ end
 20.times do
     Attendence.create(user_id:User.all.uniq.sample.id, movie_id:Movie.all.sample.id)
 end
+
+admin = User.create(name: "admin", password: "password", user_img_url: "")

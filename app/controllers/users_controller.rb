@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   # GET /users/:id
   def show
+    # byebug
   end
 
   # GET /users/new
