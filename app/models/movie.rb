@@ -5,4 +5,8 @@ class Movie < ApplicationRecord
     validates :description, presence: true
     validates :time, presence: true
     validates :max_guests, presence: true
+
+    def self.get_sample
+        self.all.sample
+    end
 end

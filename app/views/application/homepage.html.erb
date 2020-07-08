@@ -1,4 +1,44 @@
 <h3> What is Digital Meetup?</h3>
 
-<p>Digital Meetup is an app that trys to mimic the experince of going to the movies, going drinking with your friends, and more. All from the comfort of your own home.<br> you can host all types of events and have meet abunch of new people. </p>
+<p>Digital Meetup is an app that trys to mimic the experince of going to the movies, going drinking with your friends, and more. All from the comfort of your own home.<br> You can create, host, and sign up to attend all types of events and have meet abunch of new people. </p>
+<h4>Here is a sample of some upcoming events!</h4>
+<section class=container>
+    <div class="one">
+        <%movie1=Movie.get_sample%>
+        <div align=center>
+        <% if movie1.img_url == "" %>
+        <img src= "https://us.bgxme.com/images/no-img.png" alt="No Image" width="50" height="60">
+        <%else%>
+        <img src= <%= movie1.img_url %> alt="Event Image" width="50" height="60">
+        <% end %><br>
+        </div>
+        <%=link_to movie1.title, movie_path(movie1)%>: <br>
+        <%=movie1.description%>
+    </div>
 
+    <div class="two">
+        <%movie2=Movie.get_sample%>
+        <div align=center>
+        <% if movie2.img_url == "" %>
+        <img src= "https://us.bgxme.com/images/no-img.png" alt="No Image" width="50" height="60">
+        <%else%>
+        <img src= <%=movie2.img_url %> alt="Event Image" width="50" height="60">
+        <% end %><br>
+        </div>
+        <%=link_to movie2.title, movie_path(movie2)%>: <br>
+        <%=movie2.description%>
+    </div>
+
+    <div class="three">
+        <%movie3=Movie.get_sample%>
+        <div align=center>
+        <% if movie3.img_url == "" %>
+        <img src= "https://us.bgxme.com/images/no-img.png" alt="No Image" width="50" height="60">
+        <%else%>
+        <img src= <%=movie3.img_url %> alt="Event Image" width="50" height="60">
+        <% end %><br>
+        </div>
+        <%=link_to movie3.title, movie_path(movie3)%>: <br>
+        <%=movie3.description%>
+    </div>
+</section>

@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 10.times do 
-    User.create(name:Faker::Name.name)
+    User.create(name:Faker::Name.name, password:"password",user_img_url:"")
 end
 
 10.times do
-    Movie.create(title:Faker::Movie.title, description:Faker::Movie.quote,time:Faker::Time.between(from: DateTime.now, to: DateTime.now + 5, format: :default),max_guests:30,user_id:User.all.sample.id)
+    Movie.create(title:Faker::Movie.title, description:Faker::Movie.quote,time:Faker::Time.between(from: DateTime.now, to: DateTime.now + 5, format: :default),max_guests:30,user_id:User.all.sample.id,img_url:"")
 end
 
 20.times do
