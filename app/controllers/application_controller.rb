@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
     helper_method :current_user
     helper_method :logged_in?
-
+    helper_method :current_movie
 
     def homepage
 
@@ -17,5 +17,9 @@ class ApplicationController < ActionController::Base
     #checks if the is logged in or not
     def logged_in?
         !current_user.nil?
+    end
+
+    def current_movie
+        Movie.find(session[:movie]["id"])
     end
 end

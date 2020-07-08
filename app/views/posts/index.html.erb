@@ -1,7 +1,9 @@
 <h1>Comments</h1>
-
 <ul>
-<% Post.all.each do |post| %>
+<%if current_movie.posts.length == 0%>
+<h4> This movie has no comments<h4>
+<%else%>
+<% current_movie.posts.each do |post| %>
     <li>
     <strong><%= post.post_title %></strong><br>
     <strong>User: </strong><%= post.user.name %><br>
@@ -12,5 +14,6 @@
     </li>
     <% end %>
 </ul>
+<%end%>
 
-<%= link_to "new comment", new_post_path %>
+<%= link_to "Add New Comment For #{current_movie.title}", new_post_path %>

@@ -8,7 +8,6 @@
 <%= f.label :rating %>
 <%= f.number_field :rating %>
 <%= f.hidden_field :user_id, :value => session[:user_id]%>
-<%= f.label :movie_id%>
-<%= f.select :movie_id, Movie.all.collect {|movie| [movie.title,movie.id]}%><br>
+<%= f.number_field :movie_id, :value => current_movie.id%><br>
 <%= f.submit %>
 <% end %>

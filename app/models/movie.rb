@@ -10,4 +10,5 @@ class Movie < ApplicationRecord
     def self.get_sample
         self.all.sample
     end
+
 end
