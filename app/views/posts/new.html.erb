@@ -1,13 +1,3 @@
 <h1>Post A Comment</h1>
 
-<%= form_for @post do |f| %>
-<%= f.label :post_title %>
-<%= f.text_field :post_title %>
-<%= f.label :comment %>
-<%= f.text_area :comment %>
-<%= f.label :rating %>
-<%= f.number_field :rating %>
-<%= f.hidden_field :user_id, :value => session[:user_id]%>
-<%= f.number_field :movie_id, :value => current_movie.id%><br>
-<%= f.submit %>
-<% end %>
+<%= render 'form', post: @post %>

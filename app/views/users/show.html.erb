@@ -16,7 +16,7 @@
 <% unless @user.hosting.count == 0  %>
   <ul>
     <% @user.hosting.each do |movie| %>
-      <li><%=  movie.title%></li>
+      <li><%= link_to movie.title, movie_path(movie)%></li>
     <% end %>
   </ul>
 
@@ -32,7 +32,7 @@
 <% unless @user.attending.count == 0 %>
   <ul>
     <% @user.attending.each do |attendence|%>
-        <li><%= attendence.movie.title %></li>
+        <li><%= link_to attendence.movie.title,movie_path(attendence.movie) %></li>
       <%end %>
   </ul>
   </div>
@@ -46,7 +46,7 @@
 <h3>Movies I've hosted</h3>
 <% unless @user.hosted.count == 0 %>
 <% @user.hosted.each do |movie|%>
-    <li><%= movie.title %></li>
+    <li><%= link_to movie.title, movie_path(movie) %></li>
 <%end %>
 <% else %>
     <ul>
@@ -59,7 +59,7 @@
 <ul>
 <% @user.attended.each do |attendence|%>
   <% if attendence.movie.time < Time.now %>
-    <li><%= attendence.movie.title%></li>
+    <li><%= link_to attendence.movie.title, movie_path(attendence.movie)%></li>
   <%end %>
 <%end %>
 </ul>
@@ -70,7 +70,8 @@
     </ul>
 <% end %>
 
-
-<%= link_to 'Delete User', @user, method: :delete, data: { confirm: 'Are you sure?' }%>
-<%= link_to 'Edit User', edit_user_path(@user) %> 
-<%= link_to 'User Index', users_path %>
+<% if params[:id].to_i == current_user.id %>
+  <%= link_to 'Delete User', @user, method: :delete, data: { confirm: 'Are you sure?' }%>
+  <%= link_to 'Edit User', edit_user_path(@user) %> 
+<% end %>
+  <%= link_to 'User Index', users_path %>
