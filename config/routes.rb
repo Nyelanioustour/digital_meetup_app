@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users
   resources :movies
   resources :attendences, only: [:index, :new, :create, :edit, :update]
+  resources :posts, only: [:index, :new, :create]
   get "/homepage", to: "application#homepage", as: "homepage"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
