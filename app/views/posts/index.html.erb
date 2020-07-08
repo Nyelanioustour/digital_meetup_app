@@ -1,7 +1,7 @@
 <h1>Comments</h1>
 
 <ul>
-<% @posts.each do |post| %>
+<% session[:movie].posts.each do |post| %>
     <li>
     <strong><%= post.post_title %></strong><br>
     <strong>User: </strong><%= post.user.name %><br>

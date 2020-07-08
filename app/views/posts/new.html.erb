@@ -7,8 +7,7 @@
 <%= f.text_area :comment %>
 <%= f.label :rating %>
 <%= f.number_field :rating %>
-<%= f.label :user_id %>
-<%= f.select :user_id, User.all.collect {|user| [user.name, user.id]}%>
+<%= f.hidden_field :user_id, :value => session[:user_id]%>
 <%= f.label :movie_id%>
 <%= f.select :movie_id, Movie.all.collect {|movie| [movie.title,movie.id]}%><br>
 <%= f.submit %>
