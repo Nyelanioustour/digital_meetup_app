@@ -4,6 +4,7 @@ class User < ApplicationRecord
     has_many :posts
 
     has_secure_password
+    validates :name, uniqueness: true
 
     def hosted
         self.movies.select do |movie|

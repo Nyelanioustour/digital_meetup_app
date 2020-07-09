@@ -2,7 +2,6 @@
     <section>
       <div class="box">
         <h3 class="has-text-weight-semibold" id="title">User Name: <a class="has-text-weight-normal"><%= @user.name %></a></h1> <br>
-        <a id="left">
         <% if @user.user_img_url == "" %>
           <img src= "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="No Image" width="100" height="100">
         <% else %>
@@ -16,47 +15,45 @@
           <button class="button is-light">
             <%= link_to 'Edit Account', edit_user_path(@user) %> 
           </button>
-        <%end%>
-
         <button class = "button is-light"> <%=link_to 'Host A Movie', new_movie_path%></button> 
         <div class="box">
         <h1 class="is-size-4"><strong>Biography:</strong><br><br></h1>
         <h1 class="is-size-5"><%=@user.bio%></h1>
         </div>
+        <%end%>
+
 
       </div>
     </section>
       <br>
-    <section class = box>
-
-        <div class = "box" id = left>
-          <h1 id="title"> Movies I'm hosting </h1>
-          <ul id="subtitle">
-            <% unless @user.hosting.count == 0  %>
+    <section class ="box">
+          <h1 id="title"> Movies <%=@user.name%> is hosting </h1>
+          <ul>
+            <% if @user.hosting.count != 0  %>
                 <% @user.hosting.each do |movie| %>
-                  <li><%=link_to movie.title, movie_path(movie)%></li>
+                  <li id="subtitle"><%=link_to movie.title, movie_path(movie)%></li>
                 <% end %>
             <% else %>
-                  <li><%= "This user is not currently hosting any movies" %></li>
+                  <li id="subtitle"><%= "This user is not currently hosting any movies" %></li>
             <% end %>
           </ul>
 
           <br>
           
-          <h1 id="title">Movies I'm attending</h1>
-            <ul id="subtitle">
-          <% unless @user.attending.count == 0 %>
+          <h1 id="title">Movies <%=@user.name%> is attending</h1>
+            <ul>
+          <% if @user.attending.count != 0 %>
               <% @user.attending.each do |attendence|%>
-                  <li><%= link_to attendence.movie.title, movie_path(attendence.movie) %></li>
+                  <li id="subtitle"><%= link_to attendence.movie.title, movie_path(attendence.movie) %></li>
                 <%end %>
           <% else %>
-                <li><%= "This user is not attending any movies" %></li>
+                <li id="subtitle"><%= "This user is not attending any movies" %></li>
             </ul>
           <% end %>
 
           <br>
 
-          <h1 id="title">Movies I've hosted</h1>
+          <h1 id="title">Movies <%=@user.name%> has hosted</h1>
               <ul id="subtitle">
           <% unless @user.hosted.count == 0 %>
           <% @user.hosted.each do |movie|%>
@@ -69,7 +66,7 @@
 
          <br>
 
-          <h1 id="title">Movies I've seen</h1>
+          <h1 id="title">Movies <%=@user.name%> has seen</h1>
             <ul id="subtitle">
           <% unless @user.attended.count == 0 %>
               <% @user.attended.each do |attendence|%>
@@ -81,13 +78,14 @@
                 <li><%= "This user has not attended any previous movies" %></li>
               </ul>
           <% end %>
-        </div>
-        
+
+    </section>
+    <section>
         <div class="box" id ="right">
           <h1 id="title">User Statistics</h1>
-          <h1 id="subtitle">User's current average event rating is <%=@user.avg_rating%><h1>
-          <h1 id="subtitle">User's total number of event ratings is <%=@user.total_ratings%><h1>
-          <h1 id="subtitle">User's total number of events held is <%=@user.movies.count%><h1>
-          <h1 id="subtitle">User's total number of events attendence is <%=@user.movies.count + @user.attendences.count%><h1>
+          <h1 id="subtitle"><%="#{@user.name}'s current average event rating is " %><%=@user.avg_rating%><h1>
+          <h1 id="subtitle"><%="#{@user.name}'s total number of event ratings is " %><%=@user.total_ratings%><h1>
+          <h1 id="subtitle"><%="#{@user.name}'s total number of events held is " %><%=@user.movies.count%><h1>
+          <h1 id="subtitle"><%="#{@user.name}'s total number of events attendence is " %><%=@user.movies.count + @user.attendences.count%><h1>
         </div>
     </section>

@@ -1,15 +1,26 @@
-<h1>New User</h1>
-<h1>Sign Up</h1>
+<p id="notice"><%= notice %></p>
+<h1 class="is-size-5">Enter your information below to create a DigitalMeetup Account</h1><br>
 
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
 <%= form_for @user do |f| %>
-<%= f.label "Image Url" %>
-<%= f.text_field :user_img_url %>
 <%= f.label :name %>
 <%= f.text_field :name %><br>
 <%= f.label :password %>
 <%= f.password_field :password %><br>
+<%= f.label "Image Url (Optional: Add A Profile Picture)" %>
+<%= f.text_field :user_img_url %>
 <%= f.submit %>
 <% end %>
-<%# <%= render 'form', user: @user %> 
 
-<%= link_to 'Back', users_path %>
+<%= link_to 'Cancel', homepage_path %>
