@@ -8,7 +8,12 @@ class Movie < ApplicationRecord
     validates :max_guests, presence: true
 
     def self.get_sample
-        self.all.sample
+        self.all.select do |movie| 
+            if movie.time >= Time.now 
+                movie
+            end
+        end.uniq.sample
     end
+
 
 end
