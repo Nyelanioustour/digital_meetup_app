@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_08_002606) do
+ActiveRecord::Schema.define(version: 2020_07_09_153144) do
 
   create_table "attendences", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_07_08_002606) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.string "user_img_url"
+    t.text "bio"
   end
 
   add_foreign_key "attendences", "movies"
