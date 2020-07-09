@@ -15,5 +15,7 @@ class Movie < ApplicationRecord
         end.uniq.sample
     end
 
-
+    def spots_left
+        self.max_guests - self.attendences.count
+    end
 end
