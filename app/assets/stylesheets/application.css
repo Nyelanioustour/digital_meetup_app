@@ -20,6 +20,9 @@
     margin: auto;
     padding: 10px;
 }
+.error_message{
+    color: red;
+}
 #navbar{
         font-size: large;
         text-align: justify;

@@ -1,4 +1,8 @@
-<h1>Enter Your Login Information</h1>
+<h1 class="is-size-5">Enter Your Login Information</h1> <br>
+<% if flash[:notice] %>
+    <div class="error_message"><%= flash[:notice] %></div>
+  <% end %>
+
 <%= form_tag '/login' do %>
     <%= label_tag :name, "Username"%>
     <%= text_field_tag :name %>
@@ -6,5 +10,5 @@
     <%= password_field_tag :password%>
     <%= submit_tag "Login"%>
 <%end%> 
-
+<br>
 <h4>Don't have an account? <%= link_to 'Sign Up As A New User', new_user_path %></h4><br>

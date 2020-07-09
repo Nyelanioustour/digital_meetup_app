@@ -22,9 +22,13 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.create(user_params)
-    session[:user_id] = @user.id
-    redirect_to welcome_path
+    @user = User.new(user_params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to welcome_path
+    else
+    render :new 
+    end
   end
 
   # PATCH/PUT /users/:id
