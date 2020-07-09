@@ -15,33 +15,33 @@
  */
  p { color: blue; }
 .container {
-             width: 100%;
-             height: 200px;
-             margin: auto;
-             padding: 10px;
-           }
+    width: 100%;
+    height: 200px;
+    margin: auto;
+    padding: 10px;
+}
 
 .one {
         width: 15%;
         height: 200px;
         float: left;
-        margin:auto
-        border-style: groove
+        margin:auto;
+        border-style: groove;
     }
 
 .two {
         margin-left: 15%;
         height: 200px;
         float: left;
-        margin: auto
-        border-style:groove
+        margin: auto;
+        border-style:groove;
     }
 .three {
         margin-left: 15%;
         height: 200px;
         float: left;
-        margin: auto
-        border-style:groove
+        margin: auto;
+        border-style:groove;
     }
 #navbar{
         font-size: large;
@@ -67,3 +67,17 @@
         text-decoration: underline;
         padding-bottom: 10px;
     }
+
+.all-of-it{
+    position: relative;
+    min-height: 100vh;
+}
+.body-content{
+    padding-bottom: 2.5rem;  
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem; 
+}
