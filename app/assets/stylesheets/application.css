@@ -50,7 +50,7 @@
     height: 2.5rem; 
 }
 .hero_body{
-    lex-grow: 1;
+    flex-grow: 1;
     flex-shrink: 0;
     padding: 1rem 1.5rem;
 }
