@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
- p { color: blue; }
+ /* p { color: blue; } */
 .container {
     width: 100%;
     height: 200px;
@@ -68,16 +68,22 @@
         padding-bottom: 10px;
     }
 
-.all-of-it{
+/* .all-of-it{
     position: relative;
     min-height: 100vh;
 }
 .body-content{
     padding-bottom: 2.5rem;  
-}
+} */
 .footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem; 
+    padding: 3rem 1.5rem 6rem;
+    padding-top: 3rem;
+    padding-right: 1.5rem;
+    padding-bottom: 6rem;
+    padding-left: 1.5rem;
+}
+.hero_body{
+    lex-grow: 1;
+    flex-shrink: 0;
+    padding: 1rem 1.5rem;
 }
