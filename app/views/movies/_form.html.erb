@@ -1,48 +1,52 @@
-<p id="notice"><%= notice %></p>
-<%= form_with(model: movie, local: true) do |f| %>
-  <% if movie.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+<section class="box">
+  <p id="notice"><%= notice %></p>
+  <%= form_with(model: movie, local: true) do |f| %>
+    <% if movie.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
 
-      <ul>
-        <% movie.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% movie.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
     </div>
+
+    <div class="field">
+      <%= f.label :description %>
+      <div class="control">
+        <%= f.text_area :description, class: "textarea"%>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Time (format: YYYY-MM-DD HH:MM:SS)' %>
+      <%= f.text_field :time %>
+    </div>
+
+    <div class="field">
+      <%= f.label :max_guests %>
+      <%= f.number_field :max_guests %>
+    </div>
+
+    <div class="field">
+      <%= f.hidden_field :user_id, :value => session[:user_id] %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'Image Url (optional)' %>
+      <%= f.text_field :img_url %>
+    </div>
+    <div id="left" class="actions">
+      <%= f.submit %>
+    </div>
+    <button id="left"> <%=link_to 'Cancel', user_path(current_user)%></button>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %>
-    <div class="control">
-       <%= f.text_area :description, class: "textarea"%>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Time (format: YYYY-MM-DD HH:MM:SS)' %>
-    <%= f.text_field :time %>
-  </div>
-
-  <div class="field">
-    <%= f.label :max_guests %>
-    <%= f.number_field :max_guests %>
-  </div>
-
-  <div class="field">
-    <%= f.hidden_field :user_id, :value => session[:user_id] %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Image Url (optional)' %>
-    <%= f.text_field :img_url %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+  <br><br>
+</section>

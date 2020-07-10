@@ -1,5 +1,10 @@
-<h1>You are signing up to attend!</h1>
+<section class= "box">
+    <%if current_user.has_joined?(current_movie)%>
+    <p id="subtitle">You are already attending <%=current_movie.title%>!</p>
+    <%else%>
+    <h1 id="subtitle">You are signing up to attend <%=current_movie.title%>!</h1>
+    <%= render 'form', attendence: @attendence %>
+    <%end%>
 
-<%= render 'form', attendence: @attendence %>
-
-<%= link_to 'Back', attendences_path %>
+    <%= link_to 'Cancel', user_path(current_user) %>
+<section>

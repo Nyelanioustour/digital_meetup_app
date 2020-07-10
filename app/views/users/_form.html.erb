@@ -1,36 +1,35 @@
 <p id="notice"><%= notice %></p>
-<% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<section class="box">
+  <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <%= form_for @user do |f| %>
+  <%= f.label 'User Name' %>
+  <%= f.text_field :name %><br>
+  <%= f.label 'Password (leave blank unless you want to change passwords)' %>
+  <%= f.password_field :password %><br>
+  <%= f.label "Profile Picture URL"%>
+  <%= f.text_field :user_img_url %>
+  <br><br>
+  <%= f.label 'Biography' %>
+  <div class="control">
+      <%= f.text_area :bio, class: "textarea", placeholder: "Comment here", cols: "30"%>
+  </div>
+  <br>
+  <div id="left" class="actions">
+  <%= f.submit 'Update User'%></button>
+  </div>
+  <button id="left"><%= link_to 'Cancel', @user %></button>
   <% end %>
+  <br><br>
 
-
-
-<%= form_for @user do |f| %>
-<%= f.label 'User Name' %>
-<%= f.text_field :name %><br>
-<%= f.label 'Password (leave blank unless you want to change passwords)' %>
-<%= f.password_field :password %><br>
-<%= f.label "Profile Picture URL"%>
-<%= f.text_field :user_img_url %>
-<br><br>
-<%= f.label 'Biography' %>
-<div class="control">
-    <%= f.text_area :bio, class: "textarea", placeholder: "Comment here", cols: "30"%>
-</div>
-<br>
-<div class="control">
-<%= f.submit 'Update User', class: "button is-small" %>
-<div>
-<% end %>
-<br>
-
-<%= link_to 'Cancel', @user %> 
-
+  </section>
