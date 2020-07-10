@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :movies
   resources :attendences, only: [:index, :new, :create, :edit, :update]
   resources :posts, only: [:index, :new, :create]
-  get "/homepage", to: "application#homepage", as: "homepage"
+  get "/", to: "application#homepage", as: "homepage"
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   get '/welcome', to: "sessions#welcome"

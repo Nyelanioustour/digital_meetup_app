@@ -1,56 +1,63 @@
 <p id="notice"><%= notice %></p>
 <%session[:movie] = @movie%>
-<div>
-<%if @movie.img_url == ""%>
-<img src= "https://us.bgxme.com/images/no-img.png" alt="No Image" width="50" height="60">
-<%else%>
-<img src=<%=@movie.img_url%> alt="<%=@movie.title%>" width="500" height="600">
-<%end%>
-</div>
 
-<h3>
-  <strong>Title:</strong>
-  <%= @movie.title %>
-</h3>
+<section class="box">
+  <div>
+  <%if @movie.img_url == ""%>
+    <img src= "https://us.bgxme.com/images/no-img.png" alt="No Image" width="50" height="60">
+    <%else%>
+    <img src=<%=@movie.img_url%> alt="<%=@movie.title%>" width="500" height="600">
+    <%end%>
+  </div>
+  <br>
 
-<h3>
-  <strong>Description:</strong>
-  <%= @movie.description %>
-</h3>
+  <p id="title">
+    <strong>Title:</strong>
+    <%= @movie.title %>
+  </p>
 
-<h3 color:blue>
-  <strong>Time:</strong>
-  <%= @movie.time %>
-</h3>
+  <p id="subtitle">
+    <strong>Description:</strong>
+    <%= @movie.description %>
+  </p>
 
-<h3>
-  <strong>Max guests:</strong>
-  <%= @movie.max_guests %>
-</h3>
+  <p color:blue id="subtitle">
+    <strong>Time:</strong>
+    <%= @movie.time %>
+  </p>
 
-<h3>
-  <strong>Host:</strong>
-  <%= link_to @movie.user.name, user_path(@movie.user_id) %>
-</h3>
+  <p id="subtitle">
+    <strong>Max guests:</strong>
+    <%= @movie.max_guests %>
+  </p>
 
-<p>
-  <strong>Spots Remaining</strong>
-  <%= @movie.spots_left%>
-</p>
-<%= button_to 'Join Event', new_attendence_path, :method => :get %> <br>
+  <p id="subtitle">
+    <strong>Host:</strong>
+    <%= link_to @movie.user.name, user_path(@movie.user_id) %>
+  </p>
 
-<div>
-  <strong>Users Who Are Attending Event!</strong><br>
-  <% @movie.attendences.each do |attendence|%>
-  <li><%= link_to attendence.user.name, user_path(attendence.user_id)%></li>
-  <% end%>
-</div>
-<br>
+  <p id="subtitle">
+    <strong>Spots Remaining</strong>
+    <%= @movie.spots_left%>
+  </p>
 
-<%if session[:user_id] == @movie.user_id%>
-<%= link_to 'Join Event', edit_attendence_path(@movie) %> |
-<%= link_to 'Edit Event', edit_movie_path(@movie) %> |
-<%end%>
+  <div>
+    <p id="subtitle"><strong>Users Who Are Attending Event!</strong><br><p>
+    <% @movie.attendences.each do |attendence|%>
+    <li ><%= link_to attendence.user.name, user_path(attendence.user_id)%></li>
+    <% end%>
+  </div>
+  <br>
+  <div>
+    <%if @movie.user.id == current_user.id%>
+    <button id="left"><%= link_to 'Edit Event', edit_movie_path(@movie) %> </button>
+    <%end%>
+    
+    <button id="left"><%= link_to 'Join Event', new_attendence_path%> </button>
+    <button id="left"><%= link_to 'Event Comments', posts_path %></button>
+    <%if session[:user_id] == @movie.user_id%>
+    <%end%>
+  </div>
+  <br><br><br>
 
-<%= link_to 'Comments', posts_path %>
-<%= link_to 'See All Events', movies_path %>
+</section>

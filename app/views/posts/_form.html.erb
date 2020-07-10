@@ -1,35 +1,35 @@
 <p id="notice"><%= notice %></p>
-<% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<section class="box">
+  <% if post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-<div class="field">
-    <%= form_for @post do |f| %>
-    <h1 class="label"><%=  f.label :post_title %></h1>
-    <div class="control">
-        <%= f.text_field :post_title, class: "input", placeholder: "Post topic here" %>
-    </div>
-    <h1 class="label"><%= f.label :comment %></h1>
-    <div class="control">
-       <%= f.text_area :comment, class: "textarea", placeholder: "Comment here", cols: "30"%>
-    </div>
-    <h1 class="label"><%= f.label :rating %></h1>
-    <div class="select">
-        <%= f.select :rating, (1..5).to_a, {} %>
-    </div>
-    <%= f.hidden_field :user_id, :value => session[:user_id]%>
-    <%= f.hidden_field :movie_id, :value => current_movie.id%><br>
-    <div class="control">
-        <%= f.submit "Create a post", class: "button is-light"%>
-    </div>
+        <ul>
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-</div>
 
+  <div class="field">
+      <%= form_for @post do |f| %>
+      <h1 class="label"><%=  f.label :post_title %></h1>
+      <div class="control">
+          <%= f.text_field :post_title, class: "input", placeholder: "Post topic here" %>
+      </div>
+      <h1 class="label"><%= f.label :comment %></h1>
+      <div class="control">
+        <%= f.text_area :comment, class: "textarea", placeholder: "Comment here", cols: "30"%>
+      </div>
+      <h1 class="label"><%= f.label :rating %></h1>
+      <div class="select">
+          <%= f.select :rating, (1..5).to_a, {} %>
+      </div>
+      <%= f.hidden_field :user_id, :value => session[:user_id]%>
+      <%= f.hidden_field :movie_id, :value => current_movie.id%><br>
+      <div class="control">
+          <%= f.submit "Create a post", class: "button is-light"%>
+      </div>
+      <% end %>
+  </section>

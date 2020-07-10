@@ -1,28 +1,24 @@
 <p id="notice"><%= notice %></p>
-
-<h1 class="title is-4">Full List of Active Users</h1>
-
-<table class="table is-hoverable">
-  <thead>
-    <tr>
-      <th align=left>User Name</th>
-      <th align=center> Scheduled Events</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+<section class="box">
+  <table class="table is-hoverable is-fullwidth">
+    <thead>
       <tr>
-        <% unless user == User.find_by(name:"admin") %>
-        <td><%= link_to user.name, user %></td>
-        <td><%="Hosting #{user.hosting.count} Upcoming Event(s)"%></td>
-        <% end %>
+        <th align=left>User Name</th>
+        <th align=left> Scheduled Events</th>
       </tr>
-      <tr>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <% unless user == User.find_by(name:"admin") %>
+          <td><%= link_to user.name, user %></td>
+          <td><%="Hosting #{user.hosting.count} Upcoming Event(s)"%></td>
+          <% end %>
+        </tr>
+        <tr>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

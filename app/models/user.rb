@@ -6,6 +6,16 @@ class User < ApplicationRecord
     has_secure_password
     validates :name, uniqueness: true
 
+    def has_joined?(movie)
+        if movie.attendences.select do |attendence|
+                attendence.user_id == self.id 
+            end.length == 0
+            return false
+        else 
+            return true
+        end
+    end
+
     def hosted
         self.movies.select do |movie|
             if movie.time < Time.now

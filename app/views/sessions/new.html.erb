@@ -2,13 +2,14 @@
 <% if flash[:notice] %>
     <div class="error_message"><%= flash[:notice] %></div>
   <% end %>
-
-<%= form_tag '/login' do %>
-    <%= label_tag :name, "Username"%>
-    <%= text_field_tag :name %>
-    <%= label_tag :password%>
-    <%= password_field_tag :password%>
-    <%= submit_tag "Login"%>
-<%end%> 
-<br>
-<h4>Don't have an account? <%= link_to 'Sign Up As A New User', new_user_path %></h4><br>
+<section class="box">
+  <%= form_tag '/login' do %>
+      <%= label_tag :name, "Username"%>
+      <%= text_field_tag :name %>
+      <%= label_tag :password%>
+      <%= password_field_tag :password%>
+      <%= submit_tag "Login"%>
+  <%end%> 
+  <br>
+  <h4>Don't have an account? <%= link_to 'Sign Up As A New User', new_user_path %></h4><br>
+</section>

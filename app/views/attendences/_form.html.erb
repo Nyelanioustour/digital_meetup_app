@@ -1,16 +1,18 @@
-<p id="notice"><%= notice %></p>
-<%= form_with(model: attendence, local: true) do |f| %>
+<section class="box">
+  <p id="notice"><%= notice %></p>
+  <%= form_with(model: attendence, local: true) do |f| %>
 
-You are attending <%=session[:movie]["title"]%>
-  <div class="field">
-    <%=f.hidden_field :movie_id, :value => session[:movie]["id"]%>
-  </div>
+  You are attending <%=session[:movie]["title"]%>
+    <div class="field">
+      <%=f.hidden_field :movie_id, :value => session[:movie]["id"]%>
+    </div>
 
-  <div class="field">
-    <%=f.hidden_field :user_id, :value => session[:user_id]%>
-  </div>
+    <div class="field">
+      <%=f.hidden_field :user_id, :value => session[:user_id]%>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Confirm Attendence" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Confirm Attendence" %>
+    </div>
+  <% end %>
+<section>

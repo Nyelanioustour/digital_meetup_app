@@ -1,39 +1,36 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Movies</h1>
-<table class="table is-hoverable">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Time</th>
-      <th>Max guests</th>
-      <th>Spots remaining</th>
-      <th align=center>Host</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @movies.each do |movie| %>
+  <%if logged_in?%>
+  <button class="button is-light"><%= link_to 'Add A New Movie', new_movie_path %></button>
+  <%end%>
+<section class="box">
+  <table class="table is-hoverable is-fullwidth">
+    <thead>
       <tr>
-        <td><%= link_to movie.title, movie %></td>
-        <td><%= movie.description %></td>
-        <td align=center><%= movie.time %></td>
-        <td align=center><%= movie.max_guests %></td>
-        <td align=center><%= movie.spots_left %></td>
-        <td align=center><%= link_to movie.user.name, user_path(movie.user.id) %></td>
-        <%if session[:user_id] == User.find_by(name:"admin").id%>
-          <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-          <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <%end%>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Time</th>
+        <th>Max guests</th>
+        <th>Spots remaining</th>
+        <th align=center>Host</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-
-<br>
-<%if logged_in?%>
-<%= link_to 'Add A New Movie', new_movie_path %>
-<%end%>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= link_to movie.title, movie %></td>
+          <td><%= movie.description %></td>
+          <td align=center><%= movie.time %></td>
+          <td align=center><%= movie.max_guests %></td>
+          <td align=center><%= movie.spots_left %></td>
+          <td align=center><%= link_to movie.user.name, user_path(movie.user.id) %></td>
+          <%if session[:user_id] == User.find_by(name:"admin").id%>
+            <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+            <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <%end%>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
