@@ -21,7 +21,7 @@
                 </article>
             </div>
             <div class="tile is-parent is-3 is-vertical">
-                <article class="tile is-child notification is-black is-light">
+                <article class="tile is-child notification is-info is-light">
                     <div class="content">
                         <p class="title">And what can it do?</p>
                         <p class="subtitle">You can create, host, and sign up to attend all types of events and have meet abunch of new people.</p>
@@ -29,7 +29,7 @@
                 </article>
             </div>
             <div class="tile is-parent is-3">
-                <article class="tile is-child notification is-black is-light">
+                <article class="tile is-child notification is-success is-light">
                     <div class="content">
                         <p class="title">Development News/task</p>
                         <p class="subtitle"><ul><li>Find out what to put in this slot</li><li>Fix movie show page</li><li>Dev account is username:admin, password:password</li></p>
@@ -46,7 +46,7 @@
 <div class="tile is-ancestor">
     <div class="tile">
         <div class="tile is-parent">
-            <article class=" tile is-child notification is-black is-light">
+            <article class=" tile is-child notification is-primary is-light">
                 <div class="content">
                     <%movie1=Movie.get_sample%>
                     <div align=center>
@@ -55,13 +55,13 @@
                         <%else%>
                             <img src= <%= movie1.img_url %> alt="Event Image" width="50" height="60">
                         <% end %><br>
-                        <%=link_to movie1.title, movie_path(movie1)%>: <br>
-                        <p word-wrap: break-word;><%=movie1.description%></p>
+                        <p id ="title"><%=link_to movie1.title, movie_path(movie1)%>:</p> <br>
+                        <p id ="subtitle" word-wrap: break-word;><%=movie1.description%></p>
                     </div>
                 </div>
             </article>
 
-            <article class="tile is-child notification is-black is-light">
+            <article class="tile is-child notification is-info is-light">
                 <%movie2=Movie.get_sample%>
                 <div align=center>
                     <% if movie2.img_url == "" || movie2.img_url == nil %>
@@ -69,12 +69,12 @@
                     <%else%>
                         <img src= <%=movie2.img_url %> alt="Event Image" width="50" height="60">
                     <% end %><br>
-                    <%=link_to movie2.title, movie_path(movie2)%>: <br>
-                    <p word-wrap: break-word;><%=movie2.description%></p>
+                    <p id="title"><%=link_to movie2.title, movie_path(movie2)%>:</p> <br>
+                    <p id="subtitle" word-wrap: break-word;><%=movie2.description%></p>
                 </div>
             </article>
 
-            <article class="tile is-child notification is-black is-light">
+            <article class="tile is-child notification is-success is-light">
                 <%movie3=Movie.get_sample%>
                 <div align=center>
                     <% if movie3.img_url == "" || movie3.img_url == nil %>
@@ -82,8 +82,8 @@
                     <%else%>
                         <img src= <%=movie3.img_url %> alt="Event Image" width="50" height="60">
                     <% end %><br>
-                    <%=link_to movie3.title, movie_path(movie3)%>: <br>
-                    <p word-wrap: break-word;><%=movie3.description%></p>
+                    <p id="title"><%=link_to movie3.title, movie_path(movie3)%>:</p> <br>
+                    <p id="subtitle" word-wrap: break-word;><%=movie3.description%></p>
                 </div>
             </article>
         </div>
