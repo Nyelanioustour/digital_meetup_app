@@ -14,9 +14,12 @@
           <% unless user == User.find_by(name:"admin") %>
           <td><%= link_to user.name, user %></td>
           <td><%="Hosting #{user.hosting.count} Upcoming Event(s)"%></td>
-          <% end %>
-        </tr>
-        <tr>
+          <td> 
+            <%if current_user = User.find_by(name:"admin")%>
+              <%= link_to 'Edit', edit_user_path(user)%>
+            <% end %>
+          <%end%>
+          </td> 
         </tr>
       <% end %>
     </tbody>

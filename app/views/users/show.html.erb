@@ -16,11 +16,11 @@
             <%= link_to 'Edit Account', edit_user_path(@user) %> 
           </button>
         <button class = "button is-light"> <%=link_to 'Host A Movie', new_movie_path%></button> 
+        <%end%>
         <div class="box">
         <h1 class="is-size-4"><strong>Biography:</strong><br><br></h1>
         <h1 class="is-size-5"><%=@user.bio%></h1>
         </div>
-        <%end%>
 
 
       </div>

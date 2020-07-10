@@ -1,10 +1,11 @@
 <section class= "box">
     <%if current_user.has_joined?(current_movie)%>
     <p id="subtitle">You are already attending <%=current_movie.title%>!</p>
+    <button id="left"><%= link_to 'Remove Signup', attendence_path(current_user.find_attendence(current_movie).id), :method => :delete %></button>
     <%else%>
     <h1 id="subtitle">You are signing up to attend <%=current_movie.title%>!</h1>
     <%= render 'form', attendence: @attendence %>
     <%end%>
-
-    <%= link_to 'Cancel', user_path(current_user) %>
+    <button id="left"><%= link_to 'Cancel', user_path(current_user) %></button>
+    <br><br><br>
 <section>

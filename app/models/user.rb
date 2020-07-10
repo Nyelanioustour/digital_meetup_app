@@ -15,6 +15,11 @@ class User < ApplicationRecord
             return true
         end
     end
+    def find_attendence(movie)
+        movie.attendences.select do |attendence|
+            attendence.user_id == self.id 
+        end[0]
+    end
 
     def hosted
         self.movies.select do |movie|

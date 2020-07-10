@@ -7,11 +7,8 @@ class AttendencesController < ApplicationController
 
     end
   
-
     def show
     end
-  
-
     
     
     def edit
@@ -33,6 +30,11 @@ class AttendencesController < ApplicationController
         else
           render :new 
         end
+    end
+
+    def destroy
+      @attendence.destroy
+        redirect_to user_path(current_user), notice: 'attendence was successfully destroyed.' 
     end
 
     private

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   resources :movies
-  resources :attendences, only: [:index, :new, :create, :edit, :update]
+  resources :attendences, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :posts, only: [:index, :new, :create]
   get "/", to: "application#homepage", as: "homepage"
   get "/login", to: "sessions#new"
