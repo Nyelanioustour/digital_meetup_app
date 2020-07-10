@@ -16,8 +16,12 @@
         <strong>User: </strong><%= post.user.name %><br>
         <strong>Movie name: </strong><%= post.movie.title %><br>
         <strong>Rating: </strong><%= post.rating %><br><br>
-        <strong>Comment: </strong> <br>
-        <%= post.comment %>
+        <strong>Comment: </strong>
+        <% if post.user.id == current_user.id || session[:user_id] == User.find_by(name: "admin").id%>
+            <%= post.comment %><br>
+            <%= link_to "Edit comment", edit_post_path(post) %>
+            <%= link_to "Delete Comment", post_path(post), :method => :delete %>
+        <% end %>
         </div>
     </li>
     <% end %>
